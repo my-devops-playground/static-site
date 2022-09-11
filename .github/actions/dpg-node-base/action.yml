@@ -1,0 +1,30 @@
+name: dpg-node-base
+description: 'Executes basic steps for Node type projects'
+inputs:
+  node-version:
+    description: 'Node version'
+    default: '16.17'
+  cache-node-modules:  # id of input
+    description: 'Whether or not to cache node_modules directory'
+    required: false
+    default: 'true'
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: "${{ inputs.node-version }}"
+        cache: 'npm'
+    - uses: actions/cache@v2
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+      if: ${{ inputs.cache-node-modules }}
+    - run: npm install
+      shell: bash

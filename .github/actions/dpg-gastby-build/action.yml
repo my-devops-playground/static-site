@@ -1,0 +1,12 @@
+name: dpg-gastby-build
+description: 'Executes basic steps for a Node type project'
+runs:
+  using: "composite"
+  steps:
+    - run: npm run-script build
+      shell: bash
+    - name: Upload output file
+      uses: actions/upload-artifact@v3
+      with:
+        name: output-files
+        path: public    

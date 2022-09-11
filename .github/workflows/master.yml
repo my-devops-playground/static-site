@@ -1,0 +1,20 @@
+name: cx-example
+on: 
+  push:
+    branches:
+      - "master"
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/dpg-node-base
+      - uses: ./.github/actions/dpg-gastby-typecheck
+  build:
+    needs: qa
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/dpg-node-base
+      - uses: ./.github/actions/dpg-gastby-build
+      - uses: ./.github/actions/dpg-s3

@@ -1,0 +1,7 @@
+name: secuoyas-cx-s3
+description: 'Sends secuoyas-cx-compile output to S3'
+runs:
+  using: "composite"
+  steps:
+    - run: echo 'sending to S3'
+      shell: bash
