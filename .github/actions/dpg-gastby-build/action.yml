@@ -1,5 +1,5 @@
 name: dpg-gastby-build
-description: 'Executes run-script build in a Gastby project'
+description: 'Executes "npm run-script build" in a Gastby project'
 runs:
   using: "composite"
   steps:
