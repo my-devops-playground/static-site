@@ -1,5 +1,5 @@
 name: dpg-node-base
-description: 'Executes basic steps for Node type projects'
+description: 'Executes basic preparation steps for Node type projects'
 inputs:
   node-version:
     description: 'Node version'
