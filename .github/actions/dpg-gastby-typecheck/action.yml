@@ -1,5 +1,5 @@
 name: dpg-gastby-typecheck
-description: 'Executes QA tasks such as lintr, tests, type-checkers...etc'
+description: 'Executes quality tasks such as lintr, tests, type-checkers...etc'
 runs:
   using: "composite"
   steps:
